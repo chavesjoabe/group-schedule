@@ -1,0 +1,224 @@
+[
+  {
+    "tuesdays": [
+      {
+        "01/08/2023": {
+          "drummer": "Mike",
+          "guitar_player": "Jim",
+          "vocal_ministry": "Pam",
+          "vocal_alto": "Nancy",
+          "vocal_soprano": "Jam",
+          "vocal_tenor": "Israel",
+          "acoustic_guitar_player": "Nick",
+          "bassist": "Ryan",
+          "pianist": "Beto",
+          "horn_player": "Sam",
+          "sax_player": "Ale"
+        }
+      },
+      {
+        "08/08/2023": {
+          "drummer": "Joabe",
+          "guitar_player": "Tiago",
+          "vocal_ministry": "Pam",
+          "vocal_alto": "Nancy",
+          "vocal_soprano": "Jam",
+          "vocal_tenor": "Israel",
+          "acoustic_guitar_player": "Nick",
+          "bassist": "Ryan",
+          "pianist": "Beto",
+          "horn_player": "Sam",
+          "sax_player": "Ale"
+        }
+      },
+      {
+        "15/08/2023": {
+          "drummer": "Nickolas",
+          "guitar_player": "Jim",
+          "vocal_ministry": "Pam",
+          "vocal_alto": "Nancy",
+          "vocal_soprano": "Jam",
+          "vocal_tenor": "Israel",
+          "acoustic_guitar_player": "Nick",
+          "bassist": "Ryan",
+          "pianist": "Beto",
+          "horn_player": "Sam",
+          "sax_player": "Ale"
+        }
+      },
+      {
+        "22/08/2023": {
+          "drummer": "Nickolas",
+          "guitar_player": "Jim",
+          "vocal_ministry": "Pam",
+          "vocal_alto": "Nancy",
+          "vocal_soprano": "Jam",
+          "vocal_tenor": "Israel",
+          "acoustic_guitar_player": "Nick",
+          "bassist": "Ryan",
+          "pianist": "Beto",
+          "horn_player": "Sam",
+          "sax_player": "Ale"
+        }
+      },
+      {
+        "29/08/2023": {
+          "drummer": "Joabe",
+          "guitar_player": "Tiago",
+          "vocal_ministry": "Pam",
+          "vocal_alto": "Nancy",
+          "vocal_soprano": "Jam",
+          "vocal_tenor": "Israel",
+          "acoustic_guitar_player": "Nick",
+          "bassist": "Ryan",
+          "pianist": "Beto",
+          "horn_player": "Sam",
+          "sax_player": "Ale"
+        }
+      }
+    ]
+  },
+  {
+    "thursdays": [
+      {
+        "03/08/2023": {
+          "drummer": "Joabe",
+          "guitar_player": "Tiago",
+          "vocal_ministry": "Pam",
+          "vocal_alto": "Nancy",
+          "vocal_soprano": "Jam",
+          "vocal_tenor": "Israel",
+          "acoustic_guitar_player": "Nick",
+          "bassist": "Ryan",
+          "pianist": "Beto",
+          "horn_player": "Sam",
+          "sax_player": "Ale"
+        }
+      },
+      {
+        "10/08/2023": {
+          "drummer": "John",
+          "guitar_player": "Stanley",
+          "vocal_ministry": "Pam",
+          "vocal_alto": "Nancy",
+          "vocal_soprano": "Jam",
+          "vocal_tenor": "Israel",
+          "acoustic_guitar_player": "Nick",
+          "bassist": "Ryan",
+          "pianist": "Beto",
+          "horn_player": "Sam",
+          "sax_player": "Ale"
+        }
+      },
+      {
+        "17/08/2023": {
+          "drummer": "John",
+          "guitar_player": "Stanley",
+          "vocal_ministry": "Pam",
+          "vocal_alto": "Nancy",
+          "vocal_soprano": "Jam",
+          "vocal_tenor": "Israel",
+          "acoustic_guitar_player": "Nick",
+          "bassist": "Ryan",
+          "pianist": "Beto",
+          "horn_player": "Sam",
+          "sax_player": "Ale"
+        }
+      },
+      {
+        "24/08/2023": {
+          "drummer": "John",
+          "guitar_player": "Stanley",
+          "vocal_ministry": "Pam",
+          "vocal_alto": "Nancy",
+          "vocal_soprano": "Jam",
+          "vocal_tenor": "Israel",
+          "acoustic_guitar_player": "Nick",
+          "bassist": "Ryan",
+          "pianist": "Beto",
+          "horn_player": "Sam",
+          "sax_player": "Ale"
+        }
+      },
+      {
+        "31/08/2023": {
+          "drummer": "Joabe",
+          "guitar_player": "Tiago",
+          "vocal_ministry": "Pam",
+          "vocal_alto": "Nancy",
+          "vocal_soprano": "Jam",
+          "vocal_tenor": "Israel",
+          "acoustic_guitar_player": "Nick",
+          "bassist": "Ryan",
+          "pianist": "Beto",
+          "horn_player": "Sam",
+          "sax_player": "Ale"
+        }
+      }
+    ]
+  },
+  {
+    "sundays": [
+      {
+        "06/08/2023": {
+          "drummer": "Nickolas",
+          "guitar_player": "Jim",
+          "vocal_ministry": "Pam",
+          "vocal_alto": "Nancy",
+          "vocal_soprano": "Jam",
+          "vocal_tenor": "Israel",
+          "acoustic_guitar_player": "Nick",
+          "bassist": "Ryan",
+          "pianist": "Beto",
+          "horn_player": "Sam",
+          "sax_player": "Ale"
+        }
+      },
+      {
+        "13/08/2023": {
+          "drummer": "Mike",
+          "guitar_player": "Jim",
+          "vocal_ministry": "Pam",
+          "vocal_alto": "Nancy",
+          "vocal_soprano": "Jam",
+          "vocal_tenor": "Israel",
+          "acoustic_guitar_player": "Nick",
+          "bassist": "Ryan",
+          "pianist": "Beto",
+          "horn_player": "Sam",
+          "sax_player": "Ale"
+        }
+      },
+      {
+        "20/08/2023": {
+          "drummer": "John",
+          "guitar_player": "Stanley",
+          "vocal_ministry": "Pam",
+          "vocal_alto": "Nancy",
+          "vocal_soprano": "Jam",
+          "vocal_tenor": "Israel",
+          "acoustic_guitar_player": "Nick",
+          "bassist": "Ryan",
+          "pianist": "Beto",
+          "horn_player": "Sam",
+          "sax_player": "Ale"
+        }
+      },
+      {
+        "27/08/2023": {
+          "drummer": "John",
+          "guitar_player": "Stanley",
+          "vocal_ministry": "Pam",
+          "vocal_alto": "Nancy",
+          "vocal_soprano": "Jam",
+          "vocal_tenor": "Israel",
+          "acoustic_guitar_player": "Nick",
+          "bassist": "Ryan",
+          "pianist": "Beto",
+          "horn_player": "Sam",
+          "sax_player": "Ale"
+        }
+      }
+    ]
+  }
+]
