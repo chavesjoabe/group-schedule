@@ -12,10 +12,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: npm
-          cache-dependency-path: ./package.lock.json
+          cache: 'npm'
 
-      - name: install deps
+      - name: install dependencies
         run: npm ci
 
       - name: run tests
