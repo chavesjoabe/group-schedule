@@ -1,14 +1,13 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { CrewService } from './services/crew.service.js';
 
-const filename = 'out.json';
+const filename = 'out2.json';
 
 const file = JSON.parse(await readFile(filename));
 const year = new Date().getFullYear();
-const month = new Date().getMonth() + 1;
+const month = 10 // new Date().getMonth() + 1;
 
 const serviceDays = CrewService.getAllServicesInCurrentMonth(year, month);
-
 const usersByDay = file.map(item => {
   const objCopy = { ...item };
   const toRemoveKeys = ['Index', 'Nome', 'role'];
@@ -18,7 +17,7 @@ const usersByDay = file.map(item => {
     Object.entries(objCopy).filter(item => item[1] === 'Sim');
   const formatedObjKeys = availableServiceDaysEntries.map((item) => {
     const day = item[0].split(' ')[1];
-    const formatDateNumber = (number) => Number(number) > 9 ? day : `0${number}`;
+    const formatDateNumber = (number) => Number(number) > 9 ? number : `0${number}`;
     return `${formatDateNumber(day)}/${formatDateNumber(month)}/${year}`;
   });
 

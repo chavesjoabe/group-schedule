@@ -1,5 +1,4 @@
 import { roles } from "../constants/service.constants.js";
-import { getRandomElement } from "../index.js";
 import { CrewService } from "../services/crew.service.js";
 import { once } from 'node:events';
 
@@ -69,8 +68,8 @@ export const crewController = {
       const response = serviceDays[item].map(serviceDay => {
         return {
           [serviceDay]: CrewService.createServiceCrew(
-            CREWS[getRandomElement(CREWS)],
-            CREWS[getRandomElement(CREWS)]
+            CREWS[CrewService.getRandomElement(CREWS)],
+            CREWS[CrewService.getRandomElement(CREWS)]
           ),
         }
       });
@@ -87,6 +86,17 @@ export const crewController = {
     const month = new Date().getMonth() + 1;
     const year = new Date().getFullYear();
     const response = CrewService.getServiceDays(year, month)
+    return res.end(JSON.stringify(response));
+  },
+
+  '/all-service-days:post': async (req, res) => {
+    const rawData = await once(req, 'data');
+    const body = JSON.parse(rawData);
+    const { year, month } = body;
+    const response = CrewService.getAllServicesInCurrentMonth(year, month);
+    res.writeHead(200, {
+      'Content-Type': 'application/json',
+    });
     return res.end(JSON.stringify(response));
   },
 
