@@ -7,7 +7,7 @@ export const roles = {
   VOCAL_ALTO: 'vocal_alto',
   VOCAL_SOPRANO: 'vocal_soprano',
   VOCAL_TENOR: 'vocal_tenor',
-  VOCAL_MINISTRY: 'vocal_ministry',
+  MINISTRY: 'ministry',
   HORN_PLAYER: 'horn_player',
   SAX_PLAYER: 'sax_player',
 }

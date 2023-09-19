@@ -9,7 +9,7 @@ describe('CreateServiceCrew Tests', () => {
     const dayServiceUsers = [
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Tiago', role: roles.GUITAR_PLAYER },
-      { name: 'Ester', role: roles.VOCAL_MINISTRY },
+      { name: 'Ester', role: roles.MINISTRY },
       { name: 'Geovania', role: roles.VOCAL_ALTO },
       { name: 'Ione', role: roles.VOCAL_SOPRANO },
       { name: 'Michael', role: roles.VOCAL_TENOR },
@@ -29,7 +29,7 @@ describe('CreateServiceCrew Tests', () => {
       vocal_alto: 'Geovania',
       vocal_soprano: 'Ione',
       vocal_tenor: 'Michael',
-      vocal_ministry: 'Ester',
+      ministry: 'Ester',
       horn_player: 'Samuel',
       sax_player: 'Alessandro',
     }
@@ -91,7 +91,7 @@ describe('CreateServiceCrew Tests', () => {
       { name: 'Nickolas', role: roles.DRUMMER },
       { name: 'Tiago', role: roles.GUITAR_PLAYER },
       { name: 'Dener', role: roles.GUITAR_PLAYER },
-      { name: 'Ester', role: roles.VOCAL_MINISTRY },
+      { name: 'Ester', role: roles.MINISTRY },
       { name: 'Geovania', role: roles.VOCAL_ALTO },
       { name: 'Ione', role: roles.VOCAL_SOPRANO },
       { name: 'Michael', role: roles.VOCAL_TENOR },
@@ -105,7 +105,7 @@ describe('CreateServiceCrew Tests', () => {
     const lastCrewArray = [
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Tiago', role: roles.GUITAR_PLAYER },
-      { name: 'Maria', role: roles.VOCAL_MINISTRY },
+      { name: 'Maria', role: roles.MINISTRY },
       { name: 'Leticia', role: roles.VOCAL_ALTO },
       { name: 'Nathally', role: roles.VOCAL_SOPRANO },
       { name: 'Israel', role: roles.VOCAL_TENOR },
@@ -125,7 +125,7 @@ describe('CreateServiceCrew Tests', () => {
       vocal_alto: 'Geovania',
       vocal_soprano: 'Ione',
       vocal_tenor: 'Michael',
-      vocal_ministry: 'Ester',
+      ministry: 'Ester',
     }
 
     const response = CrewService.createServiceCrew(dayServiceUsers, lastCrewArray);
@@ -139,7 +139,7 @@ describe('CreateServiceCrew Tests', () => {
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Tiago', role: roles.GUITAR_PLAYER },
       { name: 'Dener', role: roles.GUITAR_PLAYER },
-      { name: 'Ester', role: roles.VOCAL_MINISTRY },
+      { name: 'Ester', role: roles.MINISTRY },
       { name: 'Geovania', role: roles.VOCAL_ALTO },
       { name: 'Ione', role: roles.VOCAL_SOPRANO },
       { name: 'Michael', role: roles.VOCAL_TENOR },
@@ -153,7 +153,7 @@ describe('CreateServiceCrew Tests', () => {
     const lastCrewArray = [
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Tiago', role: roles.GUITAR_PLAYER },
-      { name: 'Maria', role: roles.VOCAL_MINISTRY },
+      { name: 'Maria', role: roles.MINISTRY },
       { name: 'Leticia', role: roles.VOCAL_ALTO },
       { name: 'Nathally', role: roles.VOCAL_SOPRANO },
       { name: 'Israel', role: roles.VOCAL_TENOR },
@@ -173,7 +173,7 @@ describe('CreateServiceCrew Tests', () => {
       vocal_alto: 'Geovania',
       vocal_soprano: 'Ione',
       vocal_tenor: 'Michael',
-      vocal_ministry: 'Ester',
+      ministry: 'Ester',
     }
 
     const response = CrewService.createServiceCrew(dayServiceUsers, lastCrewArray);
@@ -231,8 +231,8 @@ describe('CreateServiceCrew Tests', () => {
   it('Should apply guitar player bond', () => {
     const data = [
       { name: 'Joabe', role: roles.DRUMMER },
-      { name: 'Dener', role: roles.GUITAR_PLAYER, bond: { name: 'Ester', role: roles.VOCAL_MINISTRY } },
-      { name: 'Nathaly', role: roles.VOCAL_MINISTRY },
+      { name: 'Dener', role: roles.GUITAR_PLAYER, bond: { name: 'Ester', role: roles.MINISTRY } },
+      { name: 'Nathaly', role: roles.MINISTRY },
       { name: 'Geovania', role: roles.VOCAL_ALTO },
       { name: 'Ione', role: roles.VOCAL_SOPRANO },
       { name: 'Michael', role: roles.VOCAL_TENOR },
@@ -243,15 +243,15 @@ describe('CreateServiceCrew Tests', () => {
       { name: 'Alessandro', role: roles.SAX_PLAYER },
     ];
     const response = CrewService.applyUserBonds(data, 'Dener');
-    const expected = { role: roles.VOCAL_MINISTRY, name: 'Ester' };
+    const expected = { role: roles.MINISTRY, name: 'Ester' };
     deepStrictEqual(response, expected);
   });
 
   it('Should create service crew and apply bond', () => {
     const data = [
       { name: 'Joabe', role: roles.DRUMMER },
-      { name: 'Dener', role: roles.GUITAR_PLAYER, bond: { name: 'Ester', role: roles.VOCAL_MINISTRY } },
-      { name: 'Nathaly', role: roles.VOCAL_MINISTRY },
+      { name: 'Dener', role: roles.GUITAR_PLAYER, bond: { name: 'Ester', role: roles.MINISTRY } },
+      { name: 'Nathaly', role: roles.MINISTRY },
       { name: 'Geovania', role: roles.VOCAL_ALTO },
       { name: 'Ione', role: roles.VOCAL_SOPRANO },
       { name: 'Michael', role: roles.VOCAL_TENOR },
@@ -273,7 +273,7 @@ describe('CreateServiceCrew Tests', () => {
       vocal_alto: 'Geovania',
       vocal_soprano: 'Ione',
       vocal_tenor: 'Michael',
-      vocal_ministry: 'Ester',
+      ministry: 'Ester',
       horn_player: 'Samuel',
       sax_player: 'Alessandro',
     };
@@ -285,8 +285,8 @@ describe('CreateServiceCrew Tests', () => {
 
     const data = [
       { name: 'Joabe', role: roles.DRUMMER },
-      { name: 'Dener', role: roles.GUITAR_PLAYER, bond: { name: 'Ester', role: roles.VOCAL_MINISTRY } },
-      { name: 'Nathaly', role: roles.VOCAL_MINISTRY },
+      { name: 'Dener', role: roles.GUITAR_PLAYER, bond: { name: 'Ester', role: roles.MINISTRY } },
+      { name: 'Nathaly', role: roles.MINISTRY},
       { name: 'Geovania', role: roles.VOCAL_ALTO },
       { name: 'Ione', role: roles.VOCAL_SOPRANO },
       { name: 'Michael', role: roles.VOCAL_TENOR, isExtra: true },
@@ -303,7 +303,7 @@ describe('CreateServiceCrew Tests', () => {
     const expected = [
       'drummer',
       'guitar_player',
-      'vocal_ministry',
+      'ministry',
       'vocal_alto',
       'vocal_soprano',
       'vocal_tenor',
