@@ -204,12 +204,22 @@ describe('CreateServiceCrew Tests', () => {
     const year = 2023;
     const month = 9; // september
     const expected = [
-      '03/09/2023', '05/09/2023',
-      '07/09/2023', '10/09/2023',
-      '12/09/2023', '14/09/2023',
-      '17/09/2023', '19/09/2023',
-      '21/09/2023', '24/09/2023',
-      '26/09/2023', '28/09/2023'
+      "03/09/2023",
+      "03/09/2023 Night",
+      "05/09/2023",
+      "07/09/2023",
+      "10/09/2023",
+      "10/09/2023 Night",
+      "12/09/2023",
+      "14/09/2023",
+      "17/09/2023",
+      "17/09/2023 Night",
+      "19/09/2023",
+      "21/09/2023",
+      "24/09/2023",
+      "24/09/2023 Night",
+      "26/09/2023",
+      "28/09/2023"
     ];
 
     const response = CrewService.getAllServicesInCurrentMonth(year, month);
@@ -286,7 +296,7 @@ describe('CreateServiceCrew Tests', () => {
     const data = [
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Dener', role: roles.GUITAR_PLAYER, bond: { name: 'Ester', role: roles.MINISTRY } },
-      { name: 'Nathaly', role: roles.MINISTRY},
+      { name: 'Nathaly', role: roles.MINISTRY },
       { name: 'Geovania', role: roles.VOCAL_ALTO },
       { name: 'Ione', role: roles.VOCAL_SOPRANO },
       { name: 'Michael', role: roles.VOCAL_TENOR, isExtra: true },
