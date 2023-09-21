@@ -7,8 +7,10 @@ export class CrewService {
   }
 
   static createServiceCrew(currentCrew, lastCrewArray = []) {
-    const serviceCrew =
-      currentCrew.map(user => this.findPlayerByRole(currentCrew, user.role, lastCrewArray));
+    const serviceCrew = currentCrew.map(
+      user => this.findPlayerByRole(currentCrew, user.role, lastCrewArray)
+    );
+
     const response = Object.fromEntries(serviceCrew);
     const extraParticipant = this.getExtraParticipant(response, currentCrew, lastCrewArray);
     const bonds = this.applyUserBonds(currentCrew, response[roles.GUITAR_PLAYER]);
@@ -24,16 +26,20 @@ export class CrewService {
   static getExtraParticipant(userCrew, currentUserList, lastUserList = []) {
     const usersInCrew = Object.values(userCrew);
     const currentListExtraParticipants = currentUserList.filter(user => user.isExtra);
-    const availableInCurrentCrew = currentListExtraParticipants.filter(user => !usersInCrew.includes(user.name));
+    const availableInCurrentCrew =
+      currentListExtraParticipants.filter(user => !usersInCrew.includes(user.name));
     if (!availableInCurrentCrew.length) {
       return;
     };
     if (lastUserList.length === 0) {
-      return availableInCurrentCrew[this.getRandomElement(availableInCurrentCrew)].name;
+      return availableInCurrentCrew[
+        this.getRandomElement(availableInCurrentCrew)
+      ].name;
     }
     const lastUserListNames = lastUserList.map(user => user.name);
 
-    const response = availableInCurrentCrew.filter(user => !lastUserListNames.includes(user))
+    const response =
+      availableInCurrentCrew.filter(user => !lastUserListNames.includes(user))
     return response[this.getRandomElement(response)].name;
   }
 
@@ -97,8 +103,6 @@ export class CrewService {
 
 
   static getAllServicesInCurrentMonth(year, month) {
-
-    const formatDate = new Intl.DateTimeFormat('pt-br');
     const startDate = startOfMonth(new Date(year, month - 1)); // month is 0-indexed
     const endDate = endOfMonth(new Date(year, month - 1)); // month is 0-indexed
 
@@ -113,11 +117,13 @@ export class CrewService {
     const sundays = allDaysInMonth
       .filter((day) => isSunday(day))
       .map(item => this.formatDate(item));
+    const sundayNight = sundays.map((day) => `${day} Night`);
 
     const response = [
       ...tuesdays,
       ...thursdays,
       ...sundays,
+      ...sundayNight,
     ];
 
     return response.sort((a, b) => {
