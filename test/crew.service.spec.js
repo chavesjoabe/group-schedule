@@ -102,19 +102,19 @@ describe('CreateServiceCrew Tests', () => {
       { name: 'Beto', role: roles.PIANIST },
     ];
 
-    const lastCrewArray = [
-      { name: 'Joabe', role: roles.DRUMMER },
-      { name: 'Tiago', role: roles.GUITAR_PLAYER },
-      { name: 'Maria', role: roles.MINISTRY },
-      { name: 'Leticia', role: roles.VOCAL_ALTO },
-      { name: 'Nathally', role: roles.VOCAL_SOPRANO },
-      { name: 'Israel', role: roles.VOCAL_TENOR },
-      { name: 'Nick', role: roles.ACOUSTIC_GUITAR_PLAYER },
-      { name: 'Eber', role: roles.BASSIST },
-      { name: 'Isa', role: roles.PIANIST },
-      { name: 'Samuel', role: roles.HORN_PLAYER },
-      { name: 'Alessandro', role: roles.SAX_PLAYER },
-    ];
+    const lastCrew = {
+      drummer: 'Joabe',
+      guitar_player: 'Tiago',
+      ministry: 'Maria',
+      vocal_alto: 'Leticia',
+      vocal_soprano: 'Nathally',
+      vocal_tenor: 'Israel',
+      acoustic_guitar_player: 'Nick',
+      bassist: 'Eber',
+      pianist: 'Isa',
+      horn_player: 'Samuel',
+      sax_player: 'Alessandro',
+    }
 
     const expected = {
       drummer: 'Nickolas',
@@ -128,7 +128,7 @@ describe('CreateServiceCrew Tests', () => {
       ministry: 'Ester',
     }
 
-    const response = CrewService.createServiceCrew(dayServiceUsers, lastCrewArray);
+    const response = CrewService.createServiceCrew(dayServiceUsers, lastCrew);
 
     deepStrictEqual(response, expected, 'The crew values must be equal');
   });
@@ -150,19 +150,19 @@ describe('CreateServiceCrew Tests', () => {
       { name: 'Beto', role: roles.PIANIST },
     ];
 
-    const lastCrewArray = [
-      { name: 'Joabe', role: roles.DRUMMER },
-      { name: 'Tiago', role: roles.GUITAR_PLAYER },
-      { name: 'Maria', role: roles.MINISTRY },
-      { name: 'Leticia', role: roles.VOCAL_ALTO },
-      { name: 'Nathally', role: roles.VOCAL_SOPRANO },
-      { name: 'Israel', role: roles.VOCAL_TENOR },
-      { name: 'Nick', role: roles.ACOUSTIC_GUITAR_PLAYER },
-      { name: 'Eber', role: roles.BASSIST },
-      { name: 'Isa', role: roles.PIANIST },
-      { name: 'Samuel', role: roles.HORN_PLAYER },
-      { name: 'Alessandro', role: roles.SAX_PLAYER },
-    ];
+    const lastCrew = {
+      drummer: 'Joabe',
+      guitar_player: 'Tiago',
+      ministry: 'Maria',
+      vocal_alto: 'Leticia',
+      vocal_soprano: 'Nathally',
+      vocal_tenor: 'Israel',
+      acoustic_guitar_player: 'Nick',
+      bassist: 'Eber',
+      pianist: 'Isa',
+      horn_player: 'Samuel',
+      sax_player: 'Alessandro',
+  };
 
     const expected = {
       drummer: 'Joabe',
@@ -176,7 +176,7 @@ describe('CreateServiceCrew Tests', () => {
       ministry: 'Ester',
     }
 
-    const response = CrewService.createServiceCrew(dayServiceUsers, lastCrewArray);
+    const response = CrewService.createServiceCrew(dayServiceUsers, lastCrew);
 
     deepStrictEqual(response, expected, 'The crew values must be equal');
   });
@@ -312,20 +312,21 @@ describe('CreateServiceCrew Tests', () => {
 
     const expected = [
       'drummer',
+      'pianist',
       'guitar_player',
-      'ministry',
+      'bassist',
+      'acoustic_guitar_player',
       'vocal_alto',
       'vocal_soprano',
       'vocal_tenor',
-      'acoustic_guitar_player',
-      'bassist',
-      'pianist',
+      'ministry',
       'horn_player',
       'sax_player',
       'extra'
     ];
 
     const response = Object.keys(crew);
+    console.log(response);
     deepStrictEqual(response, expected)
   });
 });
