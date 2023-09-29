@@ -24,6 +24,7 @@ const usersByDay = file.map(item => {
   return {
     name: item.Nome,
     role: item.role,
+    bond: item.bond,
     isExtra: item.isExtra,
     availableDays: formatedObjKeys,
   }
@@ -36,6 +37,7 @@ const serviceCrew = serviceDays.map(item => {
       const userResponse = {
         name: user.name,
         role: user.role,
+        bond: user.bond,
         isExtra: user.isExtra,
       }
       serviceDayCrew.push(userResponse);
@@ -47,18 +49,24 @@ const serviceCrew = serviceDays.map(item => {
   }
 });
 
-const response = serviceCrew.map((item, index, array) => {
+let lastServiceCrew;
+const response = [];
+
+serviceCrew.forEach((item, index) => {
   if (index === 0) {
-    return {
+    const result = {
       serviceDayName: item.serviceDayName,
       serviceDayCrew: CrewService.createServiceCrew(item.serviceDayCrew)
     }
+    response.push(result);
+    lastServiceCrew = result.serviceDayCrew
   }
-
-  return { 
+  const result = { 
     serviceDayName: item.serviceDayName,
-    serviceDayCrew: CrewService.createServiceCrew(item.serviceDayCrew, array[index - 1].serviceDayCrew)
+    serviceDayCrew: CrewService.createServiceCrew(item.serviceDayCrew, lastServiceCrew),
   };
+  response.push(result);
+  lastServiceCrew = result.serviceDayCrew;
 });
 
 console.log(response);

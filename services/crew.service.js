@@ -7,11 +7,15 @@ export class CrewService {
   }
 
   static createServiceCrew(currentCrew, lastCrewArray = []) {
-    const serviceCrew = currentCrew.map(
-      user => this.findPlayerByRole(currentCrew, user.role, lastCrewArray)
+    const INEXISTENT_USER = 'empty';
+    const userRoles = Object.values(roles);
+    const serviceCrew = userRoles.map(
+      role => this.findPlayerByRole(currentCrew, role, lastCrewArray)
     );
 
-    const response = Object.fromEntries(serviceCrew);
+    const filteredServiceCrew = serviceCrew.filter(([key, value]) => value !== INEXISTENT_USER);
+
+    const response = Object.fromEntries(filteredServiceCrew);
     const extraParticipant = this.getExtraParticipant(response, currentCrew, lastCrewArray);
     const bonds = this.applyUserBonds(currentCrew, response[roles.GUITAR_PLAYER]);
     if (extraParticipant) {
@@ -23,7 +27,7 @@ export class CrewService {
     return response;
   }
 
-  static getExtraParticipant(userCrew, currentUserList, lastUserList = []) {
+  static getExtraParticipant(userCrew, currentUserList, lastUserList = {}) {
     const usersInCrew = Object.values(userCrew);
     const currentListExtraParticipants = currentUserList.filter(user => user.isExtra);
     const availableInCurrentCrew =
@@ -31,12 +35,12 @@ export class CrewService {
     if (!availableInCurrentCrew.length) {
       return;
     };
-    if (lastUserList.length === 0) {
+    if (Object.keys(lastUserList).length === 0) {
       return availableInCurrentCrew[
         this.getRandomElement(availableInCurrentCrew)
       ].name;
     }
-    const lastUserListNames = lastUserList.map(user => user.name);
+    const lastUserListNames = Object.values(lastUserList).map(user => user.name);
 
     const response =
       availableInCurrentCrew.filter(user => !lastUserListNames.includes(user))
@@ -57,19 +61,23 @@ export class CrewService {
     return Math.floor(Math.random() * array.length);
   }
 
-  static findPlayerByRole(userArray, role, lastUserCrew = []) {
+  static findPlayerByRole(userArray, role, lastUserCrew = {}) {
     const NOT_FOUND_VALUE = -1;
     const usersByRole = userArray.filter(user => user.role === role);
-    const lastCrewUsersByRole = lastUserCrew.filter(user => user.role === role);
+    const lastCrewUserByRole = lastUserCrew[role];
+    
+    if (usersByRole.length === 0) {
+      return [role, 'empty'];
+    }
 
-    if (lastUserCrew.length === 0) {
+    if (Object.keys(lastUserCrew).length === 0) {
       return [role, usersByRole[this.getRandomElement(usersByRole)].name];
     }
 
     const isCurrentUserInLastCrewIndex =
-      lastCrewUsersByRole.length === 0
+      lastUserCrew.length === 0
         ? NOT_FOUND_VALUE
-        : usersByRole.findIndex(user => user.name === lastCrewUsersByRole[0].name);
+        : usersByRole.findIndex(user => user.name === lastCrewUserByRole);
 
     if (
       usersByRole.length === 1 ||
