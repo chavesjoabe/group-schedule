@@ -329,5 +329,11 @@ describe('CreateServiceCrew Tests', () => {
     console.log(response);
     deepStrictEqual(response, expected)
   });
+
+  it('Should sort service day ministry based on bonds and last crew', () => {
+    const response = CrewService.sortServiceDayMinistry({}, {});
+    deepStrictEqual(response, true);
+  });
 });
+
 

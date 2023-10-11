@@ -1,4 +1,4 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import { CrewService } from './services/crew.service.js';
 
 const filename = 'out2.json';
@@ -15,10 +15,13 @@ const usersByDay = file.map(item => {
 
   const availableServiceDaysEntries =
     Object.entries(objCopy).filter(item => item[1] === 'Sim');
+
   const formatedObjKeys = availableServiceDaysEntries.map((item) => {
+    const isSundayNight = item[0].split(' ').pop() === '(noite)';
     const day = item[0].split(' ')[1];
     const formatDateNumber = (number) => Number(number) > 9 ? number : `0${number}`;
-    return `${formatDateNumber(day)}/${formatDateNumber(month)}/${year}`;
+    const prefix = isSundayNight ? ' Night' : '';
+    return `${formatDateNumber(day)}/${formatDateNumber(month)}/${year}${prefix}`;
   });
 
   return {

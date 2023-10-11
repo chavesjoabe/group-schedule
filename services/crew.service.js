@@ -27,6 +27,10 @@ export class CrewService {
     return response;
   }
 
+  static sortServiceDayMinistry(currentCrew, lastCrew) {
+    return true;
+  }
+
   static getExtraParticipant(userCrew, currentUserList, lastUserList = {}) {
     const usersInCrew = Object.values(userCrew);
     const currentListExtraParticipants = currentUserList.filter(user => user.isExtra);
