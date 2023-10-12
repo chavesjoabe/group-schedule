@@ -10,7 +10,9 @@ the actual script get all days that a group participant is available and set the
 - [x] Make the script read if the participant is in the last group and, if yes, select another participant;
 - [x] Use github actions to run all unit tests in every push;
 - [x] Insert sunday night in /all-service-days endpoint;
+- [x] Make the script get sunday night in the moment that gets availability;
 - [ ] Create a database that get the participant availability based on week days and not month day;
     - this item can be a json file in the first moment, and after can be a document in MongoDB
 - [ ] Based on participant availability, expose an endpoint that create the group for current month;
-- [ ] Create an endpoint that create a xlsx table with month availability;
+- [ ] Create an endpoint that create a xlsx file with month availability;
+- [ ] Create a method to sort the service day ministry to don't have every time the same ministry;
