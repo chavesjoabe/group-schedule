@@ -261,7 +261,8 @@ describe('CreateServiceCrew Tests', () => {
     const data = [
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Dener', role: roles.GUITAR_PLAYER, bond: { name: 'Ester', role: roles.MINISTRY } },
-      { name: 'Nathaly', role: roles.MINISTRY },
+      { name: 'Nathali', role: roles.MINISTRY },
+      { name: 'Ester', role: roles.MINISTRY },
       { name: 'Geovania', role: roles.VOCAL_ALTO },
       { name: 'Ione', role: roles.VOCAL_SOPRANO },
       { name: 'Michael', role: roles.VOCAL_TENOR },
@@ -326,13 +327,97 @@ describe('CreateServiceCrew Tests', () => {
     ];
 
     const response = Object.keys(crew);
-    console.log(response);
     deepStrictEqual(response, expected)
   });
 
-  it('Should sort service day ministry based on bonds and last crew', () => {
-    const response = CrewService.sortServiceDayMinistry({}, {});
-    deepStrictEqual(response, true);
+  it('Should sort service day ministry based on last crew', () => {
+    const userList = [
+      { name: 'Joabe', role: roles.DRUMMER },
+      { name: 'Tiago', role: roles.GUITAR_PLAYER },
+      { name: 'Nathali', role: roles.MINISTRY },
+      { name: 'Beto', role: roles.MINISTRY },
+      { name: 'Geovania', role: roles.VOCAL_ALTO },
+      { name: 'Ione', role: roles.VOCAL_SOPRANO },
+      { name: 'Michael', role: roles.VOCAL_TENOR },
+      { name: 'Deda', role: roles.ACOUSTIC_GUITAR_PLAYER },
+      { name: 'Eber', role: roles.BASSIST },
+      { name: 'Isa', role: roles.PIANIST },
+      { name: 'Samuel', role: roles.HORN_PLAYER },
+      { name: 'Alessandro', role: roles.SAX_PLAYER },
+    ];
+
+    const lastCrew = {
+      ministry: 'Beto',
+    }
+
+    const crewPreview = {
+      guitar_player: 'Tiago',
+    }
+
+    const expected = 'Nathali';
+
+    const response = CrewService.sortServiceDayMinistry(userList, lastCrew, crewPreview);
+    deepStrictEqual(response, expected);
+  });
+
+  it('Should sort service day ministry based on last crew and get the same ministry if have no another one', () => {
+    const userList = [
+      { name: 'Joabe', role: roles.DRUMMER },
+      { name: 'Tiago', role: roles.GUITAR_PLAYER },
+      { name: 'Beto', role: roles.MINISTRY },
+      { name: 'Geovania', role: roles.VOCAL_ALTO },
+      { name: 'Ione', role: roles.VOCAL_SOPRANO },
+      { name: 'Michael', role: roles.VOCAL_TENOR },
+      { name: 'Deda', role: roles.ACOUSTIC_GUITAR_PLAYER },
+      { name: 'Eber', role: roles.BASSIST },
+      { name: 'Isa', role: roles.PIANIST },
+      { name: 'Samuel', role: roles.HORN_PLAYER },
+      { name: 'Alessandro', role: roles.SAX_PLAYER },
+    ];
+
+    const lastCrew = {
+      ministry: 'Beto',
+    }
+
+    const crewPreview = {
+      guitar_player: 'Tiago',
+    }
+
+    const expected = 'Beto';
+
+    const response = CrewService.sortServiceDayMinistry(userList, lastCrew, crewPreview);
+    deepStrictEqual(response, expected);
+  });
+
+  it('Should sort service day ministry based on last crew and get one of the two remaining ministers', () => {
+    const userList = [
+      { name: 'Joabe', role: roles.DRUMMER },
+      { name: 'Tiago', role: roles.GUITAR_PLAYER },
+      { name: 'Beto', role: roles.MINISTRY },
+      { name: 'Nathali', role: roles.MINISTRY },
+      { name: 'Ester', role: roles.MINISTRY },
+      { name: 'Maria', role: roles.MINISTRY },
+      { name: 'Geovania', role: roles.VOCAL_ALTO },
+      { name: 'Ione', role: roles.VOCAL_SOPRANO },
+      { name: 'Michael', role: roles.VOCAL_TENOR },
+      { name: 'Deda', role: roles.ACOUSTIC_GUITAR_PLAYER },
+      { name: 'Eber', role: roles.BASSIST },
+      { name: 'Isa', role: roles.PIANIST },
+      { name: 'Samuel', role: roles.HORN_PLAYER },
+      { name: 'Alessandro', role: roles.SAX_PLAYER },
+    ];
+
+    const lastCrew = {
+      ministry: 'Beto',
+    }
+
+    const crewPreview = {
+      guitar_player: 'Tiago',
+    }
+
+    const response = CrewService.sortServiceDayMinistry(userList, lastCrew, crewPreview);
+    const expected = ['Maria', 'Nathali'].includes(response);
+    deepStrictEqual(true, expected);
   });
 });
 
