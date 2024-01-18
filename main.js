@@ -5,7 +5,7 @@ const filename = 'out2.json';
 
 const file = JSON.parse(await readFile(filename));
 const year = new Date().getFullYear();
-const month = 10 // new Date().getMonth() + 1;
+const month = 2 // new Date().getMonth() + 1;
 
 const serviceDays = CrewService.getAllServicesInCurrentMonth(year, month);
 const usersByDay = file.map(item => {

@@ -64,7 +64,12 @@ export class CrewService {
         this.getRandomElement(availableInCurrentCrew)
       ].name;
     }
-    const lastUserListNames = Object.values(lastUserList).map(user => user.name);
+    const lastUserListNames = Object.values(lastUserList).map(user => { 
+      if (!user) {
+        return '';
+      }
+      return user.name;
+    });
 
     const response =
       availableInCurrentCrew.filter(user => !lastUserListNames.includes(user))
