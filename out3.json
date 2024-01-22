@@ -1,0 +1,320 @@
+[
+  {
+    "Index": "1",
+    "Nome": "Dayane coppa",
+    "role": "vocal_soprano",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "2",
+    "Nome": "Samuel",
+    "role": "horn_player",
+    "isExtra": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "3",
+    "Nome": "Jéssica",
+    "role": "ministry",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "5",
+    "Nome": "Israel",
+    "role": "ministry",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "6",
+    "Nome": "Ester",
+    "role": "ministry",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "7",
+    "Nome": "Maria",
+    "role": "ministry",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": false 
+  },
+  {
+    "Index": "8",
+    "Nome": "Junior",
+    "role": "vocal_tenor",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "9",
+    "Nome": "Amauri",
+    "role": "bassist",
+    "isExtra": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "10",
+    "Nome": "Carol",
+    "role": "vocal_soprano",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "11",
+    "Nome": "Michael",
+    "role": "drummer",
+    "isExtra": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "12",
+    "Nome": "Daiane Santos",
+    "role": "vocal_alto",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "13",
+    "Nome": "Duda",
+    "role": "vocal_alto",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "14",
+    "Nome": "Joabe",
+    "role": "drummer",
+    "isExtra": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "15",
+    "Nome": "Isabella",
+    "role": "pianist",
+    "isExtra": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "16",
+    "Nome": "Letícia",
+    "role": "vocal_alto",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "17",
+    "Nome": "Geovania",
+    "role": "vocal_alto",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "18",
+    "Nome": "Ione",
+    "role": "vocal_soprano",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "19",
+    "Nome": "Tiago",
+    "role": "guitar_player",
+    "isExtra": false,
+    "bond": {
+      "name": "Nathali",
+      "role": "ministry"
+    },
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "20",
+    "Nome": "Alessandro",
+    "role": "sax_player",
+    "isExtra": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "21",
+    "Nome": "Nathali",
+    "role": "ministry",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "22",
+    "Nome": "Cláudio",
+    "role": "bassist",
+    "isExtra": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "23",
+    "Nome": "Kátia",
+    "role": "vocal_alto",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "24",
+    "Nome": "Barbara",
+    "role": "vocal_alto",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "25",
+    "Nome": "Eber",
+    "role": "bassist",
+    "isExtra": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "26",
+    "Nome": "Joel",
+    "role": "drummer",
+    "isExtra": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "27",
+    "Nome": "Joao",
+    "role": "bassist",
+    "isExtra": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "28",
+    "Nome": "Mariana",
+    "role": "vocal_soprano",
+    "isExtra": true,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "29",
+    "Nome": "Deda",
+    "role": "acoustic_guitar_player",
+    "isExtra": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "30",
+    "Nome": "Dener",
+    "role": "guitar_player",
+    "isExtra": false,
+    "bond": {
+      "name": "Ester",
+      "role": "ministry"
+    },
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "31",
+    "Nome": "Lucas",
+    "role": "drummer",
+    "isExtra": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  },
+  {
+    "Index": "32",
+    "Nome": "Karen",
+    "role": "vocal_soprano",
+    "isExtra": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
+    "availableOnTuesday": true,
+    "availableOnThursday": true
+  }
+]
