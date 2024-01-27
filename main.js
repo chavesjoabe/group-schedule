@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { CrewService } from './services/crew.service.js';
 import { isSunday, isThursday, isTuesday } from 'date-fns';
+import xlsx from 'json-as-xlsx';
 
 const filename = 'out3.json';
 const ServiceWeekNamesConstants = {
@@ -109,10 +110,57 @@ serviceCrew.forEach((item, index) => {
 
 // console.log(response);
 console.table(response.map((item) => {
-  const test = '';
   return {
     serviceDayName: item.serviceDayName,
     weekDayName: item.serviceWeekDayName,
     ...item.serviceDayCrew
   }
 }));
+
+/**
+ * @param {Array} data
+ * @returns {void}
+ */
+const generateXlsx = (data) => {
+  const fileData = [{
+    sheet: 'escala-louvor',
+    columns: [
+      { label: 'Dia', value: 'serviceDayName' },
+      { label: 'Dia semana', value: 'weekDayName' },
+      { label: 'Bateria', value: 'drummer' },
+      { label: 'Teclado', value: 'pianist' },
+      { label: 'Guitarra', value: 'guitar_player' },
+      { label: 'Baixo', value: 'bassist' },
+      { label: 'Violao', value: 'acoustic_guitar_player' },
+      { label: 'Ministro', value: 'ministry' },
+      { label: 'Sobrano', value: 'vocal_soprano' },
+      { label: 'Contralto', value: 'vocal_alto' },
+      { label: 'Tenor', value: 'vocal_tenor' },
+      { label: 'Trompete', value: 'horn_player' },
+      { label: 'Sax', value: 'sax_player' },
+      { label: 'Extra', value: 'extra' },
+    ],
+    content: [],
+  }];
+
+  data.forEach(item => {
+    const content = {
+      serviceDayName: item.serviceDayName,
+      weekDayName: item.serviceWeekDayName,
+      ...item.serviceDayCrew
+    }
+    fileData[0].content.push(content);
+  });
+
+  const params = {
+    fileName: `escala-louvor-${Date.now()}`, // Name of the resulting spreadsheet
+    extraLength: 3, // A bigger number means that columns will be wider
+    writeMode: 'writeFile', // The available parameters are 'WriteFile' and 'write'. This setting is optional. Useful in such cases https://docs.sheetjs.com/docs/solutions/output#example-remote-file
+    writeOptions: {}, // Style options from https://docs.sheetjs.com/docs/api/write-options
+  }
+  xlsx(fileData, params);
+}
+
+console.log('creating xlsx file');
+generateXlsx(response);
+console.log('done');
