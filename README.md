@@ -16,4 +16,5 @@ the actual script get all days that a group participant is available and set the
 - [ ] Create a database that get the participant availability based on week days and not month day;
     - this item can be a json file in the first moment, and after can be a document in MongoDB
 - [ ] Based on participant availability, expose an endpoint that create the group for current month;
+- [ ] Create method to generate XLSX file;
 - [ ] Create an endpoint that create a xlsx file with month availability;
