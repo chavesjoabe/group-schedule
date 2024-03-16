@@ -16,12 +16,12 @@
     "isExtra": false,
     "availableOnSunday": true,
     "availableOnSundayNight": true,
-    "availableOnTuesday": true,
+    "availableOnTuesday": false,
     "availableOnThursday": true
   },
   {
     "Index": "3",
-    "Nome": "Jéssica",
+    "Nome": "Jessica",
     "role": "ministry",
     "isExtra": true,
     "availableOnSunday": false,
@@ -83,21 +83,21 @@
     "Index": "10",
     "Nome": "Carol",
     "role": "vocal_soprano",
-    "isExtra": true,
-    "availableOnSunday": true,
-    "availableOnSundayNight": true,
-    "availableOnTuesday": true,
-    "availableOnThursday": true
+    "isExtra": false,
+    "availableOnSunday": false,
+    "availableOnSundayNight": false,
+    "availableOnTuesday": false,
+    "availableOnThursday": false
   },
   {
     "Index": "11",
     "Nome": "Michael",
     "role": "drummer",
     "isExtra": false,
-    "availableOnSunday": false,
-    "availableOnSundayNight": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
     "availableOnTuesday": false,
-    "availableOnThursday": false 
+    "availableOnThursday": false
   },
   {
     "Index": "12",
@@ -114,8 +114,8 @@
     "Nome": "Duda",
     "role": "vocal_alto",
     "isExtra": true,
-    "availableOnSunday": false,
-    "availableOnSundayNight": false,
+    "availableOnSunday": true,
+    "availableOnSundayNight": true,
     "availableOnTuesday": false,
     "availableOnThursday": false 
   },
@@ -137,11 +137,11 @@
     "availableOnSunday": true,
     "availableOnSundayNight": false,
     "availableOnTuesday": false,
-    "availableOnThursday": true
+    "availableOnThursday": false 
   },
   {
     "Index": "16",
-    "Nome": "Letícia",
+    "Nome": "Leticia",
     "role": "vocal_alto",
     "isExtra": true,
     "availableOnSunday": true,
@@ -205,7 +205,7 @@
   },
   {
     "Index": "22",
-    "Nome": "Cláudio",
+    "Nome": "Claudio",
     "role": "bassist",
     "isExtra": false,
     "availableOnSunday": true,
@@ -215,7 +215,7 @@
   },
   {
     "Index": "23",
-    "Nome": "Kátia",
+    "Nome": "Katia",
     "role": "vocal_alto",
     "isExtra": true,
     "availableOnSunday": true,

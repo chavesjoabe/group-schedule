@@ -2,30 +2,30 @@ import { eachDayOfInterval, endOfMonth, isSunday, isThursday, isTuesday, startOf
 import { roles } from "../constants/service.constants.js";
 import { crewBonds } from "../constants/crew.bonds.js";
 
-export class CrewService {
+export class TeamService {
   static formatDate(date) {
     return new Intl.DateTimeFormat('pt-br').format(date);
   }
 
-  static createServiceCrew(currentCrew, lastCrew = {}) {
+  static createServiceTeam(currentTeam, lastTeam = {}) {
     const INEXISTENT_USER = 'empty';
     const userRoles = Object.values(roles);
-    const serviceCrew = userRoles.map(
-      role => this.findPlayerByRole(currentCrew, role, lastCrew)
+    const serviceTeam = userRoles.map(
+      role => this.findPlayerByRole(currentTeam, role, lastTeam)
     );
 
-    const filteredServiceCrew = serviceCrew.filter(([key, value]) => value !== INEXISTENT_USER);
+    const filteredServiceTeam = serviceTeam.filter(([key, value]) => value !== INEXISTENT_USER);
 
-    const response = Object.fromEntries(filteredServiceCrew);
-    const extraParticipant = this.getExtraParticipant(response, currentCrew, lastCrew);
-    const bonds = this.applyUserBonds(currentCrew, response[roles.GUITAR_PLAYER]);
+    const response = Object.fromEntries(filteredServiceTeam);
+    const extraParticipant = this.getExtraParticipant(response, currentTeam, lastTeam);
+    const bonds = this.applyUserBonds(currentTeam, response[roles.GUITAR_PLAYER]);
     if (extraParticipant) {
       response.extra = extraParticipant;
     }
 
     if (!bonds) return response;
     response[bonds.role] = bonds.name;
-    response.ministry = this.sortServiceDayMinistry(currentCrew, lastCrew, response);
+    response.ministry = this.sortServiceDayMinistry(currentTeam, lastTeam, response);
     return response;
   }
 
@@ -103,19 +103,19 @@ export class CrewService {
       return [role, usersByRole[this.getRandomElement(usersByRole)].name];
     }
 
-    const isCurrentUserInLastCrewIndex =
+    const isCurrentUserInLastTeamIndex =
       lastUserCrew.length === 0
         ? NOT_FOUND_VALUE
         : usersByRole.findIndex(user => user.name === lastCrewUserByRole);
 
     if (
       usersByRole.length === 1 ||
-      isCurrentUserInLastCrewIndex === NOT_FOUND_VALUE
+      isCurrentUserInLastTeamIndex === NOT_FOUND_VALUE
     ) {
       return [role, usersByRole[this.getRandomElement(usersByRole)].name];
     }
 
-    usersByRole.splice(isCurrentUserInLastCrewIndex, 1);
+    usersByRole.splice(isCurrentUserInLastTeamIndex, 1);
 
     const response = [role, usersByRole[this.getRandomElement(usersByRole)].name];
     return response;
@@ -167,5 +167,4 @@ export class CrewService {
       return Number(a.split('/')[0] - b.split('/')[0]);
     });
   }
-
 }
