@@ -1,6 +1,8 @@
 import { readFile } from 'node:fs/promises';
-import { CrewService } from './services/crew.service.js';
+import { TeamService } from './services/team.service.js';
 import { isSunday, isThursday, isTuesday } from 'date-fns';
+import { createInterface } from 'node:readline';
+import xlsx from 'json-as-xlsx';
 
 const filename = 'out3.json';
 const ServiceWeekNamesConstants = {
@@ -12,9 +14,9 @@ const ServiceWeekNamesConstants = {
 
 const file = JSON.parse(await readFile(filename));
 const year = new Date().getFullYear();
-const month = 2 // new Date().getMonth() + 1;
+const month = 3 // new Date().getMonth() + 1;
 
-const serviceDays = CrewService.getAllServicesInCurrentMonth(year, month);
+const serviceDays = TeamService.getAllServicesInCurrentMonth(year, month);
 const usersByDay = file.map(item => {
   const {
     availableOnSunday,
@@ -64,55 +66,119 @@ const getServiceDayWeekName = (dayString) => {
   return response[0];
 }
 
-const serviceCrew = serviceDays.map(item => {
-  let serviceDayCrew = [];
+const serviceTeam = serviceDays.map(item => {
+  let serviceDayTeam = [];
   const serviceWeekDayName = getServiceDayWeekName(item)
 
   switch (serviceWeekDayName) {
     case ServiceWeekNamesConstants.SUNDAY:
-      serviceDayCrew = usersByDay.filter(user => user.availableOnSunday)
+      serviceDayTeam = usersByDay.filter(user => user.availableOnSunday)
       break;
     case ServiceWeekNamesConstants.SUNDAY_NIGHT:
-      serviceDayCrew = usersByDay.filter(user => user.availableOnSundayNight)
+      serviceDayTeam = usersByDay.filter(user => user.availableOnSundayNight)
       break;
     case ServiceWeekNamesConstants.TUESDAY:
-      serviceDayCrew = usersByDay.filter(user => user.availableOnTuesday)
+      serviceDayTeam = usersByDay.filter(user => user.availableOnTuesday)
       break;
     case ServiceWeekNamesConstants.THURSDAY:
-      serviceDayCrew = usersByDay.filter(user => user.availableOnThursday)
+      serviceDayTeam = usersByDay.filter(user => user.availableOnThursday)
       break;
   }
 
   return {
     serviceDayName: item,
     serviceWeekDayName,
-    serviceDayCrew,
+    serviceDayTeam: serviceDayTeam,
   }
 });
 
-let lastServiceCrew;
+let lastServiceTeam;
 const response = [];
 
-serviceCrew.forEach((item, index) => {
+serviceTeam.forEach((item, index) => {
   const isFirstIteration = index === 0;
   const result = {
     serviceDayName: item.serviceDayName,
     serviceWeekDayName: item.serviceWeekDayName,
-    serviceDayCrew: isFirstIteration
-      ? CrewService.createServiceCrew(item.serviceDayCrew)
-      : CrewService.createServiceCrew(item.serviceDayCrew, lastServiceCrew)
+    serviceDayTeam: isFirstIteration
+      ? TeamService.createServiceTeam(item.serviceDayTeam)
+      : TeamService.createServiceTeam(item.serviceDayTeam, lastServiceTeam)
   };
 
   response.push(result);
-  lastServiceCrew = result.serviceDayCrew;
+  lastServiceTeam = result.serviceDayTeam;
 });
 
 // console.log(response);
 console.table(response.map((item) => {
-  const test = '';
   return {
     serviceDayName: item.serviceDayName,
     weekDayName: item.serviceWeekDayName,
-    ...item.serviceDayCrew
+    ...item.serviceDayTeam,
   }
 }));
+
+/**
+ * @param {Array} data
+ * @returns {void}
+ */
+const generateXlsx = (data) => {
+  const fileData = [{
+    sheet: 'escala-louvor',
+    columns: [
+      { label: 'Dia', value: 'serviceDayName' },
+      { label: 'Dia semana', value: 'weekDayName' },
+      { label: 'Bateria', value: 'drummer' },
+      { label: 'Teclado', value: 'pianist' },
+      { label: 'Guitarra', value: 'guitar_player' },
+      { label: 'Baixo', value: 'bassist' },
+      { label: 'Violao', value: 'acoustic_guitar_player' },
+      { label: 'Ministro', value: 'ministry' },
+      { label: 'Sobrano', value: 'vocal_soprano' },
+      { label: 'Contralto', value: 'vocal_alto' },
+      { label: 'Tenor', value: 'vocal_tenor' },
+      { label: 'Trompete', value: 'horn_player' },
+      { label: 'Sax', value: 'sax_player' },
+      { label: 'Extra', value: 'extra' },
+    ],
+    content: [],
+  }];
+
+  data.forEach(item => {
+    const content = {
+      serviceDayName: item.serviceDayName,
+      weekDayName: item.serviceWeekDayName,
+      ...item.serviceDayTeam,
+    }
+    fileData[0].content.push(content);
+  });
+
+  const params = {
+    fileName: `escala-louvor-${Date.now()}`,
+    extraLength: 3,
+    writeMode: 'writeFile',
+    writeOptions: {},
+  }
+  xlsx(fileData, params);
+}
+
+const rl = createInterface({
+  input: process.stdin,
+  output: process.stdout,
+})
+
+rl.question('generate xlsx file? Y or N\n', (res) => {
+  switch (res.toUpperCase()) {
+    case 'Y':
+      generateXlsx(response);
+      console.log('done');
+      break;
+    case 'N':
+      console.log('nothing to do XD')
+      break;
+    default:
+      console.log(`there is no action to option ${res} acceptable values: "Y" or "N"`)
+      break;
+  }
+  rl.close()
+});

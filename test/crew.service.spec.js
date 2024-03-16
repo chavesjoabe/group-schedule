@@ -1,11 +1,11 @@
-import { describe, it } from 'node:test';
+import { describe, test } from 'node:test';
 import { deepStrictEqual, strictEqual } from 'node:assert'
-import { CrewService } from '../services/crew.service.js';
+import { TeamService } from '../services/team.service.js';
 import { roles } from '../constants/service.constants.js';
 
-describe('CreateServiceCrew Tests', () => {
+describe('Create Service Team Tests', () => {
 
-  it('Should create a service crew with all band', () => {
+  test('Should create a service team with all band', () => {
     const dayServiceUsers = [
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Tiago', role: roles.GUITAR_PLAYER },
@@ -34,12 +34,12 @@ describe('CreateServiceCrew Tests', () => {
       sax_player: 'Alessandro',
     }
 
-    const response = CrewService.createServiceCrew(dayServiceUsers);
+    const response = TeamService.createServiceTeam(dayServiceUsers);
 
     deepStrictEqual(response, expected);
   });
 
-  it('Should create the service crew with half band', () => {
+  test('Should create the service team with half band', () => {
     const dayServiceUsers = [
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Tiago', role: roles.GUITAR_PLAYER },
@@ -56,35 +56,35 @@ describe('CreateServiceCrew Tests', () => {
       vocal_soprano: 'Ione',
     }
 
-    const response = CrewService.createServiceCrew(dayServiceUsers);
+    const response = TeamService.createServiceTeam(dayServiceUsers);
 
     deepStrictEqual(response, expected);
   });
 
-  it('Should get user name by role', () => {
+  test('Should get user name by role', () => {
     const userArray = [
       { name: 'Joabe', role: roles.DRUMMER },
     ];
 
     const expected = ['drummer', 'Joabe'];
-    const response = CrewService.findPlayerByRole(userArray, roles.DRUMMER);
+    const response = TeamService.findPlayerByRole(userArray, roles.DRUMMER);
 
     deepStrictEqual(response, expected, 'Values must be equals');
   });
 
-  it('Should get a random user by role', () => {
+  test('Should get a random user by role', () => {
     const userArray = [
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Jim', role: roles.DRUMMER },
     ];
 
     const expected = ['Joabe', 'Jim'];
-    const response = CrewService.findPlayerByRole(userArray, roles.DRUMMER);
+    const response = TeamService.findPlayerByRole(userArray, roles.DRUMMER);
 
     deepStrictEqual(true, expected.includes(response[1]));
   });
 
-  it('Should create a service crew with last crew user array', () => {
+  test('Should create a service team with last team user array', () => {
 
     const dayServiceUsers = [
       { name: 'Joabe', role: roles.DRUMMER },
@@ -102,7 +102,7 @@ describe('CreateServiceCrew Tests', () => {
       { name: 'Beto', role: roles.PIANIST },
     ];
 
-    const lastCrew = {
+    const lastTeam = {
       drummer: 'Joabe',
       guitar_player: 'Tiago',
       ministry: 'Maria',
@@ -128,12 +128,12 @@ describe('CreateServiceCrew Tests', () => {
       ministry: 'Ester',
     }
 
-    const response = CrewService.createServiceCrew(dayServiceUsers, lastCrew);
+    const response = TeamService.createServiceTeam(dayServiceUsers, lastTeam);
 
-    deepStrictEqual(response, expected, 'The crew values must be equal');
+    deepStrictEqual(response, expected, 'The team values must be equal');
   });
 
-  it('Should create a crew with the same user if have no another one with the role for that day', () => {
+  test('Should create a team with the same user if have no another one with the role for that day', () => {
 
     const dayServiceUsers = [
       { name: 'Joabe', role: roles.DRUMMER },
@@ -150,7 +150,7 @@ describe('CreateServiceCrew Tests', () => {
       { name: 'Beto', role: roles.PIANIST },
     ];
 
-    const lastCrew = {
+    const lastTeam = {
       drummer: 'Joabe',
       guitar_player: 'Tiago',
       ministry: 'Maria',
@@ -176,31 +176,31 @@ describe('CreateServiceCrew Tests', () => {
       ministry: 'Ester',
     }
 
-    const response = CrewService.createServiceCrew(dayServiceUsers, lastCrew);
+    const response = TeamService.createServiceTeam(dayServiceUsers, lastTeam);
 
-    deepStrictEqual(response, expected, 'The crew values must be equal');
+    deepStrictEqual(response, expected, 'The team values must be equal');
   });
 
-  it('Should get a random element from an array', () => {
+  test('Should get a random element from an array', () => {
     const userList = [
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Tiago', role: roles.DRUMMER },
     ];
 
-    const result = CrewService.getRandomElement(userList);
+    const result = TeamService.getRandomElement(userList);
 
     deepStrictEqual(true, result <= 2);
   });
 
-  it('Should format date to dd/mm/aaaa format', () => {
+  test('Should format date to dd/mm/aaaa format', () => {
     const date = new Date('01/01/2023');
-    const response = CrewService.formatDate(date);
+    const response = TeamService.formatDate(date);
     const expected = '01/01/2023';
 
     strictEqual(response, expected);
   })
 
-  it('Should get all service days in current month', () => {
+  test('Should get all service days in current month', () => {
     const year = 2023;
     const month = 9; // september
     const expected = [
@@ -222,14 +222,14 @@ describe('CreateServiceCrew Tests', () => {
       "28/09/2023"
     ];
 
-    const response = CrewService.getAllServicesInCurrentMonth(year, month);
+    const response = TeamService.getAllServicesInCurrentMonth(year, month);
     deepStrictEqual(response, expected);
   });
 
-  it('Should get all service days by week day', () => {
+  test('Should get all service days by week day', () => {
     const year = 2023;
     const month = 9; // september
-    const response = CrewService.getServiceDays(year, month);
+    const response = TeamService.getServiceDays(year, month);
     const expected = {
       tuesdays: ['05/09/2023', '12/09/2023', '19/09/2023', '26/09/2023'],
       thursdays: ['07/09/2023', '14/09/2023', '21/09/2023', '28/09/2023'],
@@ -238,7 +238,7 @@ describe('CreateServiceCrew Tests', () => {
     deepStrictEqual(response, expected);
   });
 
-  it('Should apply guitar player bond', () => {
+  test('Should apply guitar player bond', () => {
     const data = [
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Dener', role: roles.GUITAR_PLAYER, bond: { name: 'Ester', role: roles.MINISTRY } },
@@ -252,12 +252,12 @@ describe('CreateServiceCrew Tests', () => {
       { name: 'Samuel', role: roles.HORN_PLAYER },
       { name: 'Alessandro', role: roles.SAX_PLAYER },
     ];
-    const response = CrewService.applyUserBonds(data, 'Dener');
+    const response = TeamService.applyUserBonds(data, 'Dener');
     const expected = { role: roles.MINISTRY, name: 'Ester' };
     deepStrictEqual(response, expected);
   });
 
-  it('Should create service crew and apply bond', () => {
+  test('Should create service team and apply bond', () => {
     const data = [
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Dener', role: roles.GUITAR_PLAYER, bond: { name: 'Ester', role: roles.MINISTRY } },
@@ -273,7 +273,7 @@ describe('CreateServiceCrew Tests', () => {
       { name: 'Alessandro', role: roles.SAX_PLAYER },
     ];
 
-    const response = CrewService.createServiceCrew(data);
+    const response = TeamService.createServiceTeam(data);
 
     const expected = {
       drummer: 'Joabe',
@@ -292,7 +292,7 @@ describe('CreateServiceCrew Tests', () => {
     deepStrictEqual(response, expected);
   });
 
-  it('Should insert extra participant in service Crew', () => {
+  test('Should insert extra participant in service Team', () => {
 
     const data = [
       { name: 'Joabe', role: roles.DRUMMER },
@@ -309,7 +309,7 @@ describe('CreateServiceCrew Tests', () => {
       { name: 'Jim', role: roles.VOCAL_TENOR, isExtra: true },
     ];
 
-    const crew = CrewService.createServiceCrew(data);
+    const team = TeamService.createServiceTeam(data);
 
     const expected = [
       'drummer',
@@ -326,11 +326,11 @@ describe('CreateServiceCrew Tests', () => {
       'extra'
     ];
 
-    const response = Object.keys(crew);
+    const response = Object.keys(team);
     deepStrictEqual(response, expected)
   });
 
-  it('Should sort service day ministry based on last crew', () => {
+  test('Should sort service day ministry based on last team', () => {
     const userList = [
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Tiago', role: roles.GUITAR_PLAYER },
@@ -346,21 +346,21 @@ describe('CreateServiceCrew Tests', () => {
       { name: 'Alessandro', role: roles.SAX_PLAYER },
     ];
 
-    const lastCrew = {
+    const lastTeam = {
       ministry: 'Beto',
     }
 
-    const crewPreview = {
+    const teamPreview = {
       guitar_player: 'Tiago',
     }
 
     const expected = 'Nathali';
 
-    const response = CrewService.sortServiceDayMinistry(userList, lastCrew, crewPreview);
+    const response = TeamService.sortServiceDayMinistry(userList, lastTeam, teamPreview);
     deepStrictEqual(response, expected);
   });
 
-  it('Should sort service day ministry based on last crew and get the same ministry if have no another one', () => {
+  test('Should sort service day ministry based on last team and get the same ministry if have no another one', () => {
     const userList = [
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Tiago', role: roles.GUITAR_PLAYER },
@@ -375,21 +375,21 @@ describe('CreateServiceCrew Tests', () => {
       { name: 'Alessandro', role: roles.SAX_PLAYER },
     ];
 
-    const lastCrew = {
+    const lastTeam = {
       ministry: 'Beto',
     }
 
-    const crewPreview = {
+    const teamPreview = {
       guitar_player: 'Tiago',
     }
 
     const expected = 'Beto';
 
-    const response = CrewService.sortServiceDayMinistry(userList, lastCrew, crewPreview);
+    const response = TeamService.sortServiceDayMinistry(userList, lastTeam, teamPreview);
     deepStrictEqual(response, expected);
   });
 
-  it('Should sort service day ministry based on last crew and get one of the two remaining ministers', () => {
+  test('Should sort service day ministry based on last team and get one of the two remaining ministers', () => {
     const userList = [
       { name: 'Joabe', role: roles.DRUMMER },
       { name: 'Tiago', role: roles.GUITAR_PLAYER },
@@ -407,15 +407,15 @@ describe('CreateServiceCrew Tests', () => {
       { name: 'Alessandro', role: roles.SAX_PLAYER },
     ];
 
-    const lastCrew = {
+    const lastTeam = {
       ministry: 'Beto',
     }
 
-    const crewPreview = {
+    const teamPreview = {
       guitar_player: 'Tiago',
     }
 
-    const response = CrewService.sortServiceDayMinistry(userList, lastCrew, crewPreview);
+    const response = TeamService.sortServiceDayMinistry(userList, lastTeam, teamPreview);
     const expected = ['Maria', 'Nathali'].includes(response);
     deepStrictEqual(true, expected);
   });
